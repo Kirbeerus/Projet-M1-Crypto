@@ -13,9 +13,10 @@ public class main {
     public static void main (String[] args) throws IOException{
     	Loader loader = new Loader();
         GenerateurCle g = new GenerateurCle();
-        byte[] octet = loader.Charger("active3d.png");
+        String nomFichier = "hello.txt";
+        byte[] octet = loader.Charger(nomFichier);
     	
-        byte[] b = g.crypteByteArray(octet);
+        byte[] b = g.crypteByteArrayLongue(octet);
     	
         for (int i = 0; i < 10; i++) {
         	System.out.println(
@@ -28,7 +29,7 @@ public class main {
      	   //fos.close(); There is no more need for this line since you had created the instance of "fos" inside the try. And this will automatically close the OutputStream
      	}
         
-        byte[] c = g.crypteByteArray(loader.Charger("testcrypte"));
+        byte[] c = g.crypteByteArrayLongue(loader.Charger("testcrypte"));
         
         for (int i = 0; i < 10; i++) {
         	System.out.println(
@@ -36,7 +37,7 @@ public class main {
         			c[i] + " , " +" character=(" + (char)c[i] + ")");
         }
         
-        try (FileOutputStream fos = new FileOutputStream("testdecrypte.png")) {
+        try (FileOutputStream fos = new FileOutputStream("decrypte-"+nomFichier)) {
         	   fos.write(c);
         	   //fos.close(); There is no more need for this line since you had created the instance of "fos" inside the try. And this will automatically close the OutputStream
         	}

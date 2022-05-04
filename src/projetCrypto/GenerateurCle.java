@@ -140,7 +140,7 @@ public class GenerateurCle {
     }
 
     public String generateCourt(int k) {
-        generer = seed;
+    	
         String var = "";
         for (int i = 0; i < k; i++) {
             var += stepCourte(); 
@@ -149,10 +149,7 @@ public class GenerateurCle {
     }
     
     public String generateLongue(int k) {
-        genererLongueA = seedLongueA;
-        genererLongueB = seedLongueB;
-        genererLongueC = seedLongueC;
-        genererLongueD = seedLongueD;
+        
         String var = "";
         for (int i = 0; i < k; i++) {
             var += stepLongueComplete(); 
@@ -182,7 +179,7 @@ public class GenerateurCle {
     }
     
     public byte[] crypteByteArrayCourte(byte[] message){
-        
+    	generer = seed;
     	byte[] resultat = message;
  		for (int i = 0; i < message.length; i++) {
  			byte b = crypteUnByteCourte(message[i]);
@@ -192,7 +189,10 @@ public class GenerateurCle {
     }
     
     public byte[] crypteByteArrayLongue(byte[] message){
-        
+    	genererLongueA = seedLongueA;
+        genererLongueB = seedLongueB;
+        genererLongueC = seedLongueC;
+        genererLongueD = seedLongueD;
     	byte[] resultat = message;
  		for (int i = 0; i < message.length; i++) {
  			byte b = crypteUnByteLongue(message[i]);
